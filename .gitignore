@@ -1,0 +1,14 @@
+.eunit
+deps
+*.o
+*.beam
+*.plt
+doc
+.DS_Store
+.*.swp
+erl_crash.dump
+log
+
+.idea
+*.iml
+
