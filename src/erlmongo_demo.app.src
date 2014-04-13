@@ -11,6 +11,7 @@
                   inets,
                   crypto,
                   mochiweb,
+                  erlmongo,
                   webmachine
                  ]},
   {mod, { erlmongo_demo_app, []}},
