@@ -1,0 +1,18 @@
+%%-*- mode: erlang -*-
+{application, erlmongo_demo,
+ [
+  {description, "erlmongo_demo"},
+  {vsn, "1"},
+  {modules, []},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  inets,
+                  crypto,
+                  mochiweb,
+                  webmachine
+                 ]},
+  {mod, { erlmongo_demo_app, []}},
+  {env, []}
+ ]}.
