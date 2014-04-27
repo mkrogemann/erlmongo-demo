@@ -113,7 +113,9 @@ delete_resowner(Username) ->
 
 
 authenticate_username_password(Username, Password, _AppContext) ->
-    case read_resowner(Username) of
+    start(), % TODO: convert oauth2_mongo into an application
+    User = binary_to_list(Username),
+    case read_resowner(User) of
         {ok, ResOwner} ->
             case verify_password(ResOwner, Password) of
                 true -> {ok, ResOwner};
@@ -127,6 +129,8 @@ authenticate_username_password(Username, Password, _AppContext) ->
 %%% Please note that we do not use any salting/hashing here.
 %%% You should obviously not do this in prodution, ever!
 %%% Proper password hashing is out of scope for this Demo.
+verify_password(ResOwner, Password) when is_binary(Password) ->
+    Password =:= ResOwner#resowner.password;
 verify_password(ResOwner, Password) ->
     list_to_binary(Password) =:= ResOwner#resowner.password.
 
