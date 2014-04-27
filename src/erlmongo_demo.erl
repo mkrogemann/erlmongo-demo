@@ -24,6 +24,7 @@ start_link() ->
     ensure_started(mochiweb),
     application:set_env(webmachine, webmachine_logger_module,
                         webmachine_logger),
+    ensure_started(oauth2),
     ensure_started(webmachine),
     erlmongo_demo_sup:start_link().
 
@@ -36,6 +37,7 @@ start() ->
     ensure_started(mochiweb),
     application:set_env(webmachine, webmachine_logger_module,
                         webmachine_logger),
+    ensure_started(oauth2),
     ensure_started(webmachine),
     application:start(erlmongo_demo).
 
@@ -44,6 +46,7 @@ start() ->
 stop() ->
     Res = application:stop(erlmongo_demo),
     application:stop(webmachine),
+    application:stop(oauth2),
     application:stop(mochiweb),
     application:stop(erlmongo),
     application:stop(crypto),
